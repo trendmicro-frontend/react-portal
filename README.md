@@ -36,7 +36,7 @@ const StyledPortal = styled(Portal)`
     color: #fff;
     background-color: rgba(0, 0, 0, .7);
 `;
-const VerticalCenter = styled.div`
+const VerticallyCenter = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
@@ -46,11 +46,11 @@ const VerticalCenter = styled.div`
 
 ```js
 <StyledPortal>
-    <VerticalCenter>
+    <VerticallyCenter>
         <Modal>
             Your modal content goes here
         </Modal>
-    </VeticalCenter>
+    </VeticallyCenter>
 </StyledPortal>
 ```
 
