@@ -22,21 +22,37 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 
 ## Usage
 
+### Center Modal Vertically
+
+You can use [styled-components](https://github.com/styled-components/styled-components) to make style changes:
+
 ```js
-<Component
-    className="component"
->
-    GitHub
-</Component>
+const StyledPortal = styled(Portal)`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .7);
+`;
+const VerticalCenter = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`;
 ```
 
-
-## API
-
-### Properties
-
-Name | Type | Default | Description 
-:--- | :--- | :------ | :----------
+```js
+<StyledPortal>
+    <VerticalCenter>
+        <Modal>
+            Your modal content goes here
+        </Modal>
+    </VeticalCenter>
+</StyledPortal>
+```
 
 ## License
 
