@@ -1,0 +1,14 @@
+{
+  "name": "@trendmicro/react-portal",
+  "description": "React Portal component",
+  "authors": [
+    "Cheton Wu <cheton_wu@trend.com.tw>"
+  ],
+  "homepage": "https://github.com/trendmicro-frontend/react-portal",
+  "snapshots": [],
+  "keywords": [
+    "react",
+    "react-portal"
+  ],
+  "license": "MIT"
+}
