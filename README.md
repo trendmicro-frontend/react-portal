@@ -24,8 +24,6 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 
 ## Usage
 
-### Styling
-
 We recommend using [styled-components](https://github.com/styled-components/styled-components) to make style changes, like so:
 
 ```js
