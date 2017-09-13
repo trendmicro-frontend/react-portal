@@ -27648,6 +27648,58 @@ module.exports = _Portal2.default;
 
 /***/ }),
 
+/***/ "./Fade.jsx":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n    from {\n        transform: scale(.25);\n        opacity: 0;\n    }\n    to {\n        transform: scale(1);\n        opacity: 1;\n    }\n'], ['\n    from {\n        transform: scale(.25);\n        opacity: 0;\n    }\n    to {\n        transform: scale(1);\n        opacity: 1;\n    }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    from {\n        transform: scale(1);\n        opacity: 1;\n    }\n    to {\n        transform: scale(.25);\n        opacity: 0;\n    }\n'], ['\n    from {\n        transform: scale(1);\n        opacity: 1;\n    }\n    to {\n        transform: scale(.25);\n        opacity: 0;\n    }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    display: inline-block;\n    visibility: ', ';\n    animation: ', ' ', 's linear;\n    transition: visibility ', 's linear;\n'], ['\n    display: inline-block;\n    visibility: ', ';\n    animation: ', ' ', 's linear;\n    transition: visibility ', 's linear;\n']);
+
+var _propTypes = __webpack_require__("../node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__("../node_modules/styled-components/dist/styled-components.es.js");
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var fadeIn = (0, _styledComponents.keyframes)(_templateObject);
+
+var fadeOut = (0, _styledComponents.keyframes)(_templateObject2);
+
+var Fade = _styledComponents2.default.div(_templateObject3, function (props) {
+    return props.out ? 'hidden' : 'visible';
+}, function (props) {
+    return props.out ? fadeOut : fadeIn;
+}, function (props) {
+    return (props.timeout / 1000).toFixed(2);
+}, function (props) {
+    return (props.timeout / 1000).toFixed(2);
+});
+Fade.propTypes = {
+    out: _propTypes2.default.bool,
+    timeout: _propTypes2.default.number
+};
+Fade.defaultProps = {
+    out: false,
+    timeout: 150
+};
+
+exports.default = Fade;
+
+/***/ }),
+
 /***/ "./Navbar.jsx":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27834,10 +27886,6 @@ __webpack_require__("../node_modules/@trendmicro/react-buttons/dist/react-button
 
 var _reactButtons = __webpack_require__("../node_modules/@trendmicro/react-buttons/lib/index.js");
 
-var _styledComponents = __webpack_require__("../node_modules/styled-components/dist/styled-components.es.js");
-
-var _styledComponents2 = _interopRequireDefault(_styledComponents);
-
 var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -27845,6 +27893,14 @@ var _react2 = _interopRequireDefault(_react);
 var _reactDom = __webpack_require__("../node_modules/react-dom/index.js");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _styledComponents = __webpack_require__("../node_modules/styled-components/dist/styled-components.es.js");
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _Fade = __webpack_require__("./Fade.jsx");
+
+var _Fade2 = _interopRequireDefault(_Fade);
 
 var _Navbar = __webpack_require__("./Navbar.jsx");
 
@@ -27920,24 +27976,28 @@ var App = function (_PureComponent) {
                             VerticallyCenter,
                             null,
                             _react2.default.createElement(
-                                Modal,
-                                null,
+                                _Fade2.default,
+                                { timeout: 150 },
                                 _react2.default.createElement(
-                                    VerticallyCenter,
+                                    Modal,
                                     null,
                                     _react2.default.createElement(
-                                        'h1',
+                                        VerticallyCenter,
                                         null,
-                                        'Modal Content'
-                                    ),
-                                    _react2.default.createElement('br', null),
-                                    _react2.default.createElement(
-                                        'div',
-                                        { style: { textAlign: 'center' } },
                                         _react2.default.createElement(
-                                            _reactButtons.Button,
-                                            { onClick: this.closeModal },
-                                            'Close Modal'
+                                            'h1',
+                                            null,
+                                            'Modal Content'
+                                        ),
+                                        _react2.default.createElement('br', null),
+                                        _react2.default.createElement(
+                                            'div',
+                                            { style: { textAlign: 'center' } },
+                                            _react2.default.createElement(
+                                                _reactButtons.Button,
+                                                { onClick: this.closeModal },
+                                                'Close Modal'
+                                            )
                                         )
                                     )
                                 )
@@ -27957,4 +28017,4 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?b63e46736483255ba73b
+//# sourceMappingURL=bundle.js.map?4d3a1860e0ef7c2dffa9

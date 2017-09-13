@@ -1,9 +1,10 @@
 import 'trendmicro-ui/dist/css/trendmicro-ui.css';
 import '@trendmicro/react-buttons/dist/react-buttons.css';
 import { Button } from '@trendmicro/react-buttons';
-import styled from 'styled-components';
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
+import Fade from './Fade';
 import Navbar from './Navbar';
 import Portal from '../src';
 
@@ -57,15 +58,17 @@ class App extends PureComponent {
                     {open &&
                     <StyledPortal>
                         <VerticallyCenter>
-                            <Modal>
-                                <VerticallyCenter>
-                                    <h1>Modal Content</h1>
-                                    <br />
-                                    <div style={{ textAlign: 'center' }}>
-                                        <Button onClick={this.closeModal}>Close Modal</Button>
-                                    </div>
-                                </VerticallyCenter>
-                            </Modal>
+                            <Fade timeout={150}>
+                                <Modal>
+                                    <VerticallyCenter>
+                                        <h1>Modal Content</h1>
+                                        <br />
+                                        <div style={{ textAlign: 'center' }}>
+                                            <Button onClick={this.closeModal}>Close Modal</Button>
+                                        </div>
+                                    </VerticallyCenter>
+                                </Modal>
+                            </Fade>
                         </VerticallyCenter>
                     </StyledPortal>
                     }
