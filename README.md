@@ -4,6 +4,8 @@
 
 React Portal
 
+The `portal` approach that transports its child into a new React component and attaches it to <b>document.body</b>. This is useful for modals or popovers.
+
 Demo: https://trendmicro-frontend.github.io/react-portal
 
 ## Installation
