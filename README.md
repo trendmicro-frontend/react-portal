@@ -24,11 +24,16 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 
 ## Usage
 
-### Center Modal Vertically
+### Styling
 
 We recommend using [styled-components](https://github.com/styled-components/styled-components) to make style changes, like so:
 
 ```js
+import Portal from '@trendmicro/react-portal';
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
+
 const StyledPortal = styled(Portal)`
     position: fixed;
     top: 0;
@@ -38,22 +43,75 @@ const StyledPortal = styled(Portal)`
     color: #fff;
     background-color: rgba(0, 0, 0, .7);
 `;
+
 const VerticallyCenter = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 `;
+
+const fadeIn = keyframes`
+    from {
+        transform: scale(.25);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+`;
+
+const fadeOut = keyframes`
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(.25);
+        opacity: 0;
+    }
+`;
+
+const Fade = styled.div`
+    display: inline-block;
+    visibility: ${props => (props.out ? 'hidden' : 'visible')};
+    animation: ${props => (props.out ? fadeOut : fadeIn)} ${props => (props.timeout / 1000).toFixed(2)}s linear;
+    transition: visibility ${props => (props.timeout / 1000).toFixed(2)}s linear;
+`;
+Fade.propTypes = {
+    out: PropTypes.bool,
+    timeout: PropTypes.number
+};
+Fade.defaultProps = {
+    out: false,
+    timeout: 150
+};
 ```
 
 Then you can nest components in the following way:
 
+### Center Modal Vertically
 ```js
 <StyledPortal>
     <VerticallyCenter>
         <Modal>
             Your modal content goes here
         </Modal>
+    </VeticallyCenter>
+</StyledPortal>
+```
+
+### Fade-in Animation
+
+```js
+<StyledPortal>
+    <VerticallyCenter>
+        <Fade timeout={150}>
+            <Modal>
+                Your modal content goes here
+            </Modal>
+        </Fade>
     </VeticallyCenter>
 </StyledPortal>
 ```
