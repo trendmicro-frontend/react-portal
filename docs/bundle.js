@@ -27866,7 +27866,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var StyledPortal = (0, _styledComponents2.default)(_src2.default)(_templateObject);
 
-var VerticalCenter = _styledComponents2.default.div(_templateObject2);
+var VerticallyCenter = _styledComponents2.default.div(_templateObject2);
 
 var Modal = _styledComponents2.default.div(_templateObject3);
 
@@ -27917,13 +27917,13 @@ var App = function (_PureComponent) {
                         StyledPortal,
                         null,
                         _react2.default.createElement(
-                            VerticalCenter,
+                            VerticallyCenter,
                             null,
                             _react2.default.createElement(
                                 Modal,
                                 null,
                                 _react2.default.createElement(
-                                    VerticalCenter,
+                                    VerticallyCenter,
                                     null,
                                     _react2.default.createElement(
                                         'h1',
@@ -27957,4 +27957,4 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?2126a0c73d24cb00016e
+//# sourceMappingURL=bundle.js.map?b63e46736483255ba73b

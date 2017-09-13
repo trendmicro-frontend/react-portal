@@ -17,7 +17,7 @@ const StyledPortal = styled(Portal)`
     background-color: rgba(0, 0, 0, .7);
 `;
 
-const VerticalCenter = styled.div`
+const VerticallyCenter = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
@@ -56,17 +56,17 @@ class App extends PureComponent {
                     }
                     {open &&
                     <StyledPortal>
-                        <VerticalCenter>
+                        <VerticallyCenter>
                             <Modal>
-                                <VerticalCenter>
+                                <VerticallyCenter>
                                     <h1>Modal Content</h1>
                                     <br />
                                     <div style={{ textAlign: 'center' }}>
                                         <Button onClick={this.closeModal}>Close Modal</Button>
                                     </div>
-                                </VerticalCenter>
+                                </VerticallyCenter>
                             </Modal>
-                        </VerticalCenter>
+                        </VerticallyCenter>
                     </StyledPortal>
                     }
                 </div>
