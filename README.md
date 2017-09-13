@@ -26,7 +26,7 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 
 ### Center Modal Vertically
 
-You can use [styled-components](https://github.com/styled-components/styled-components) to make style changes:
+We recommend using [styled-components](https://github.com/styled-components/styled-components) to make style changes, like so:
 
 ```js
 const StyledPortal = styled(Portal)`
@@ -45,6 +45,8 @@ const VerticallyCenter = styled.div`
     transform: translate(-50%, -50%);
 `;
 ```
+
+Then you can nest components in the following way:
 
 ```js
 <StyledPortal>
