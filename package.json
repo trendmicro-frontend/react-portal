@@ -1,6 +1,6 @@
 {
   "name": "@trendmicro/react-portal",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "React Portal component",
   "main": "lib/index.js",
   "files": [
@@ -43,9 +43,7 @@
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0"
   },
-  "dependencies": {
-    "prop-types": "^15.5.8"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@trendmicro/react-buttons": "~1.0.3",
     "babel-cli": "~6.24.0",
