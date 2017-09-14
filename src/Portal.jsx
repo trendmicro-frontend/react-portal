@@ -14,6 +14,7 @@ class Portal extends PureComponent {
     }
     componentWillUnmount() {
         if (this.portalElement) {
+            ReactDOM.unmountComponentAtNode(this.portalElement);
             document.body.removeChild(this.portalElement);
             this.portalElement = null;
         }

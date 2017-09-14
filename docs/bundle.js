@@ -27609,6 +27609,7 @@ var Portal = function (_PureComponent) {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
             if (this.portalElement) {
+                _reactDom2.default.unmountComponentAtNode(this.portalElement);
                 document.body.removeChild(this.portalElement);
                 this.portalElement = null;
             }
@@ -28017,4 +28018,4 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?4d3a1860e0ef7c2dffa9
+//# sourceMappingURL=bundle.js.map?7c5ba9f432e26ae88b6d
