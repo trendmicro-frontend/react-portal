@@ -1,6 +1,6 @@
 {
   "name": "@trendmicro/react-portal",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "React Portal component",
   "main": "lib/index.js",
   "files": [
