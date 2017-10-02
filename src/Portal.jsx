@@ -1,28 +1,35 @@
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 
 class Portal extends PureComponent {
-    portalElement = null;
+    static propTypes = {
+        node: PropTypes.any
+    };
+
+    portalNode = null;
 
     componentDidMount() {
-        if (!this.portalElement) {
-            this.portalElement = document.createElement('div');
-            this.portalElement.setAttribute('data-reactportal', '');
-            document.body.appendChild(this.portalElement);
+        if (!this.props.node && !this.portalNode) {
+            this.portalNode = document.createElement('div');
+            this.portalNode.setAttribute('data-reactportal', '');
+            document.body.appendChild(this.portalNode);
         }
         this.componentDidUpdate();
     }
     componentWillUnmount() {
-        if (this.portalElement) {
-            ReactDOM.unmountComponentAtNode(this.portalElement);
-            document.body.removeChild(this.portalElement);
-            this.portalElement = null;
+        if (this.props.node) {
+            ReactDOM.unmountComponentAtNode(this.props.node);
+        } else if (this.portalNode) {
+            ReactDOM.unmountComponentAtNode(this.portalNode);
+            document.body.removeChild(this.portalNode);
+            this.portalNode = null;
         }
     }
     componentDidUpdate() {
         ReactDOM.render(
             <div {...this.props} />,
-            this.portalElement
+            this.props.node || this.portalNode
         );
     }
     render() {

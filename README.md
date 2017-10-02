@@ -114,6 +114,16 @@ Then you can nest components in the following way:
 </StyledPortal>
 ```
 
+## API
+
+### Properties
+
+#### Dropdown
+
+Name | Type | Default | Description
+:--- | :--- | :------ | :----------
+node | DOM node | document.body | A root DOM node to render a React element.
+
 ## License
 
 MIT
