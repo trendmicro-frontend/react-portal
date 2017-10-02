@@ -27562,6 +27562,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp2;
+
+var _propTypes = __webpack_require__("../node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _react = __webpack_require__("../node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -27578,7 +27584,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Portal = function (_PureComponent) {
+var Portal = (_temp2 = _class = function (_PureComponent) {
     _inherits(Portal, _PureComponent);
 
     function Portal() {
@@ -27592,32 +27598,34 @@ var Portal = function (_PureComponent) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Portal.__proto__ || Object.getPrototypeOf(Portal)).call.apply(_ref, [this].concat(args))), _this), _this.portalElement = null, _temp), _possibleConstructorReturn(_this, _ret);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Portal.__proto__ || Object.getPrototypeOf(Portal)).call.apply(_ref, [this].concat(args))), _this), _this.portalNode = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Portal, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            if (!this.portalElement) {
-                this.portalElement = document.createElement('div');
-                this.portalElement.setAttribute('data-reactportal', '');
-                document.body.appendChild(this.portalElement);
+            if (!this.props.node && !this.portalNode) {
+                this.portalNode = document.createElement('div');
+                this.portalNode.setAttribute('data-reactportal', '');
+                document.body.appendChild(this.portalNode);
             }
             this.componentDidUpdate();
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            if (this.portalElement) {
-                _reactDom2.default.unmountComponentAtNode(this.portalElement);
-                document.body.removeChild(this.portalElement);
-                this.portalElement = null;
+            if (this.props.node) {
+                _reactDom2.default.unmountComponentAtNode(this.props.node);
+            } else if (this.portalNode) {
+                _reactDom2.default.unmountComponentAtNode(this.portalNode);
+                document.body.removeChild(this.portalNode);
+                this.portalNode = null;
             }
         }
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate() {
-            _reactDom2.default.render(_react2.default.createElement('div', this.props), this.portalElement);
+            _reactDom2.default.render(_react2.default.createElement('div', this.props), this.props.node || this.portalNode);
         }
     }, {
         key: 'render',
@@ -27627,8 +27635,9 @@ var Portal = function (_PureComponent) {
     }]);
 
     return Portal;
-}(_react.PureComponent);
-
+}(_react.PureComponent), _class.propTypes = {
+    node: _propTypes2.default.any
+}, _temp2);
 exports.default = Portal;
 
 /***/ }),
@@ -28018,4 +28027,4 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?7c5ba9f432e26ae88b6d
+//# sourceMappingURL=bundle.js.map?59ebcdb4447356e7ab5b
