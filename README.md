@@ -24,6 +24,18 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 
 ## Usage
 
+```js
+<Portal>
+    This text is transported to the end of document.body.
+</Portal>
+
+<Portal node={document.body && document.body.querySelector('#modal-container')}>
+    This text is transported to a specified element.
+</Portal>
+```
+
+## Examples
+
 We recommend using [styled-components](https://github.com/styled-components/styled-components) to make style changes, like so:
 
 ```js
