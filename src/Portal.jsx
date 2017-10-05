@@ -7,29 +7,29 @@ class Portal extends PureComponent {
         node: PropTypes.any
     };
 
-    portalNode = null;
+    defaultNode = null;
 
     componentDidMount() {
-        if (!this.props.node && !this.portalNode) {
-            this.portalNode = document.createElement('div');
-            this.portalNode.setAttribute('data-reactportal', '');
-            document.body.appendChild(this.portalNode);
+        if (!this.props.node && !this.defaultNode) {
+            this.defaultNode = document.createElement('div');
+            this.defaultNode.setAttribute('data-reactportal', '');
+            document.body.appendChild(this.defaultNode);
         }
         this.componentDidUpdate();
     }
     componentWillUnmount() {
         if (this.props.node) {
             ReactDOM.unmountComponentAtNode(this.props.node);
-        } else if (this.portalNode) {
-            ReactDOM.unmountComponentAtNode(this.portalNode);
-            document.body.removeChild(this.portalNode);
-            this.portalNode = null;
+        } else if (this.defaultNode) {
+            ReactDOM.unmountComponentAtNode(this.defaultNode);
+            document.body.removeChild(this.defaultNode);
+            this.defaultNode = null;
         }
     }
     componentDidUpdate() {
         ReactDOM.render(
             <div {...this.props} />,
-            this.props.node || this.portalNode
+            this.props.node || this.defaultNode
         );
     }
     render() {
