@@ -27,8 +27,11 @@ class Portal extends PureComponent {
         }
     }
     componentDidUpdate() {
+        const props = { ...this.props };
+        delete props.node;
+
         ReactDOM.render(
-            <div {...this.props} />,
+            <div {...props} />,
             this.props.node || this.defaultNode
         );
     }
