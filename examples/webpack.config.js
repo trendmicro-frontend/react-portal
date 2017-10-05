@@ -1,12 +1,12 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var stylusLoader = require('stylus-loader');
-var nib = require('nib');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const stylusLoader = require('stylus-loader');
+const nib = require('nib');
 
-module.exports = {
+const webpackConfig = {
     devtool: 'source-map',
-    entry: path.resolve(__dirname, 'index.jsx'),
+    entry: '', // EMPTY
     output: {
         path: path.join(__dirname, '../docs'),
         filename: 'bundle.js?[hash]'
@@ -76,10 +76,6 @@ module.exports = {
                 // no need to have a '@import "nib"' in the stylesheet
                 import: ['~nib/lib/nib/index.styl']
             }
-        }),
-        new HtmlWebpackPlugin({
-            filename: '../docs/index.html',
-            template: 'index.html'
         })
     ],
     resolve: {
@@ -97,3 +93,28 @@ module.exports = {
         }
     }
 };
+
+module.exports = [
+    Object.assign({}, webpackConfig, {
+        entry: path.resolve(__dirname, 'index.jsx'),
+        plugins: webpackConfig.plugins.concat(
+            new HtmlWebpackPlugin({
+                filename: '../docs/index.html',
+                template: 'index.html'
+            })
+        )
+    }),
+    Object.assign({}, webpackConfig, {
+        entry: path.resolve(__dirname, 'iframe.jsx'),
+        output: {
+            path: path.join(__dirname, '../docs'),
+            filename: 'iframe.bundle.js?[hash]'
+        },
+        plugins: webpackConfig.plugins.concat(
+            new HtmlWebpackPlugin({
+                filename: '../docs/iframe.html',
+                template: 'iframe.html'
+            })
+        )
+    })
+];
