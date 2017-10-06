@@ -41,8 +41,8 @@
     "react-portal"
   ],
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+    "react": "^0.14.0 || >=15.0.0",
+    "react-dom": "^0.14.0 || >=15.0.0"
   },
   "dependencies": {},
   "devDependencies": {
@@ -68,8 +68,8 @@
     "http-server": "~0.9.0",
     "nib": "~1.1.2",
     "prop-types": "^15.5.10",
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0",
+    "react": "^0.14.0 || >=15.0.0",
+    "react-dom": "^0.14.0 || >=15.0.0",
     "style-loader": "~0.16.1",
     "styled-components": "~2.1.2",
     "stylint": "~1.5.9",
