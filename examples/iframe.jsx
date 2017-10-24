@@ -45,6 +45,10 @@ class App extends PureComponent {
 
     persistStyles = () => {
         const parent = window.top;
+        if (parent === window) {
+            return;
+        }
+
         const parentDocument = parent.document;
         const parentHead = parentDocument.getElementsByTagName('head')[0];
 
