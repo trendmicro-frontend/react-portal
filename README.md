@@ -126,6 +126,67 @@ Then you can nest components in the following way:
 </StyledPortal>
 ```
 
+## Fullscreen Modal From Within an Iframe
+
+#### Specify the node property with an DOM element within the top window document
+
+```js
+<StyledPortal
+    node={window.top.document && window.top.document.querySelector('#modal-container')}
+>
+```
+
+#### Implement a `persistStyles()` function to synchronize style changes
+
+```js
+persistStyles = () => {
+    const parent = window.top;
+    if (parent === window) {
+        return;
+    }
+
+    const parentDocument = parent.document;
+    const parentHead = parentDocument.getElementsByTagName('head')[0];
+
+    const parentStyles = Array.prototype.slice.call(parentDocument.getElementsByTagName('style') || []);
+    parentStyles.forEach(style => {
+        if (style.getAttribute('data-cloned')) {
+            style.parentNode.removeChild(style);
+        }
+    });
+
+    const now = Date.now();
+    const styles = document.getElementsByTagName('style');
+    for (let i = 0; i < styles.length; ++i) {
+        const style = styles[i].cloneNode(true);
+        style.setAttribute('data-cloned', true);
+        style.setAttribute('data-ctime', now);
+        parentHead.appendChild(style);
+    }
+};
+```
+
+#### Use a mutation observer to observe style changes
+
+```js
+const target = document.head;
+const config = {
+    attributes: true,
+    attributeOldValue: false,
+    characterData: true,
+    characterDataOldValue: false,
+    childList: true,
+    subtree: true
+};
+this.observer = new MutationObserver(mutations => {
+    this.persistStyles();
+});
+this.observer.observe(target, config);
+```
+
+See a complete example at https://github.com/trendmicro-frontend/react-portal/blob/master/examples/iframe.jsx
+
+
 ## API
 
 ### Properties
