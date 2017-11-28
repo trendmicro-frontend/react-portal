@@ -35,20 +35,13 @@ const Modal = styled.div`
 
 class App extends PureComponent {
     state = {
-        open: false
-    };
-
-    openModal = () => {
-        this.setState({ open: true });
-    };
-    closeModal = () => {
-        this.setState({ open: false });
+        modal1: false,
+        modal2: false
     };
 
     render() {
         const name = 'React Portal';
         const url = 'https://github.com/trendmicro-frontend/react-portal';
-        const { open } = this.state;
 
         return (
             <div>
@@ -58,19 +51,58 @@ class App extends PureComponent {
                         <div className="col-md-6">
                             <Section className="row-md-5">
                                 <h2>Modal Window</h2>
-                                {!open &&
-                                <Button onClick={this.openModal}>Open</Button>
-                                }
-                                {open &&
-                                <StyledPortal>
+                                <Button
+                                    onClick={() => {
+                                        this.setState({ modal1: true, modal2: false });
+                                    }}
+                                >
+                                    Open
+                                </Button>
+                                {this.state.modal1 &&
+                                <StyledPortal node={document.querySelector('#modal-container')}>
                                     <VerticallyCenter>
                                         <Fade timeout={150}>
                                             <Modal>
                                                 <VerticallyCenter>
-                                                    <h1>Modal Content</h1>
+                                                    <h1>Modal #1</h1>
                                                     <br />
                                                     <div style={{ textAlign: 'center' }}>
-                                                        <Button onClick={this.closeModal}>Close Modal</Button>
+                                                        <Button
+                                                            onClick={() => {
+                                                                this.setState({
+                                                                    modal1: false,
+                                                                    modal2: true
+                                                                });
+                                                            }}
+                                                        >
+                                                            Close Modal
+                                                        </Button>
+                                                    </div>
+                                                </VerticallyCenter>
+                                            </Modal>
+                                        </Fade>
+                                    </VerticallyCenter>
+                                </StyledPortal>
+                                }
+                                {this.state.modal2 &&
+                                <StyledPortal node={document.querySelector('#modal-container')}>
+                                    <VerticallyCenter>
+                                        <Fade timeout={150}>
+                                            <Modal>
+                                                <VerticallyCenter>
+                                                    <h1>Modal #2</h1>
+                                                    <br />
+                                                    <div style={{ textAlign: 'center' }}>
+                                                        <Button
+                                                            onClick={() => {
+                                                                this.setState({
+                                                                    modal1: false,
+                                                                    modal2: false
+                                                                });
+                                                            }}
+                                                        >
+                                                            Close Modal
+                                                        </Button>
                                                     </div>
                                                 </VerticallyCenter>
                                             </Modal>

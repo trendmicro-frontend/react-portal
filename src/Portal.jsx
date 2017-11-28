@@ -7,23 +7,28 @@ class Portal extends PureComponent {
         node: PropTypes.any
     };
 
-    defaultNode = null;
+    node = null;
 
     componentDidMount() {
-        if (!this.props.node && !this.defaultNode) {
-            this.defaultNode = document.createElement('div');
-            this.defaultNode.setAttribute('data-reactportal', '');
-            document.body.appendChild(this.defaultNode);
+        if (!this.node) {
+            this.node = document.createElement('div');
+            this.node.setAttribute('data-reactportal', '');
+
+            if (this.props.node) {
+                this.props.node.appendChild(this.node);
+            } else {
+                document.body.appendChild(this.node);
+            }
         }
         this.componentDidUpdate();
     }
     componentWillUnmount() {
-        if (this.props.node) {
-            ReactDOM.unmountComponentAtNode(this.props.node);
-        } else if (this.defaultNode) {
-            ReactDOM.unmountComponentAtNode(this.defaultNode);
-            document.body.removeChild(this.defaultNode);
-            this.defaultNode = null;
+        if (this.node) {
+            ReactDOM.unmountComponentAtNode(this.node);
+            if (this.node.parentNode) {
+                this.node.parentNode.removeChild(this.node);
+            }
+            this.node = null;
         }
     }
     componentDidUpdate() {
@@ -32,7 +37,7 @@ class Portal extends PureComponent {
 
         ReactDOM.render(
             <div {...props} />,
-            this.props.node || this.defaultNode
+            this.node
         );
     }
     render() {
