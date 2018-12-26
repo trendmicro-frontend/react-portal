@@ -1,3 +1,5 @@
 import Portal from './Portal';
+import RenderPortal from './RenderPortal';
 
-module.exports = Portal;
+export { Portal, RenderPortal };
+export default Portal;
