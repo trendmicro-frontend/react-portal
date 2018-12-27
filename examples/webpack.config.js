@@ -25,7 +25,7 @@ const webpackConfig = {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/,
-                options: { ...babelConfig }
+                options: babelConfig
             },
             {
                 test: /\.styl$/,
