@@ -20,7 +20,9 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 
   ```js
   import Portal from '@trendmicro/react-portal';
-  import LegacyPortal from '@trendmicro/react-portal/LegacyPortal'; // A fallback for React v15 or cross-frame rendering
+
+  // Use LegacyPortal if you need cross-frame rendering support.
+  import LegacyPortal from '@trendmicro/react-portal/LegacyPortal';
   ```
 
 ## Usage
@@ -33,13 +35,11 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 </Portal>
 
 <Portal node={document.body && document.body.querySelector('#modal-container')}>
-    This text is transported to a specified element.
+    This text is transported to a DOM element.
 </Portal>
 ```
 
 ### LegacyPortal
-
-Use LegacyPortal if you need cross-frame rendering or have trouble upgrading to React 16.
 
 ```jsx
 <LegacyPortal
@@ -147,7 +147,7 @@ Then you can nest components in the following way:
 
 ## Fullscreen Modal From Within an Iframe
 
-#### Specify the node property with an DOM element within the top window document
+#### Transport children to a DOM element within the top window document
 
 ```js
 <LegacyPortal
@@ -156,7 +156,7 @@ Then you can nest components in the following way:
     <Overlay>
         <Fade timeout={150}>
             <Modal>
-                This text is transported to a DOM element within the top window document.
+                Your modal content goes here
             </Modal>
         </Fade>
     </Overlay>
