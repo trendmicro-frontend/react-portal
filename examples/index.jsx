@@ -59,7 +59,7 @@ class App extends PureComponent {
                                     Open
                                 </Button>
                                 {this.state.modal1 &&
-                                <Portal node={document.querySelector('#modal-container')}>
+                                <Portal>
                                     <Overlay>
                                         <VerticallyCenter>
                                             <Fade timeout={150}>
@@ -87,7 +87,7 @@ class App extends PureComponent {
                                 </Portal>
                                 }
                                 {this.state.modal2 &&
-                                <Portal node={document.querySelector('#modal-container')}>
+                                <Portal>
                                     <Overlay>
                                         <VerticallyCenter>
                                             <Fade timeout={150}>

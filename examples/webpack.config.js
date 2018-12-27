@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const stylusLoader = require('stylus-loader');
 const nib = require('nib');
+const babelConfig = require('../babel.config');
 
 const webpackConfig = {
     devtool: 'source-map',
@@ -21,14 +22,10 @@ const webpackConfig = {
                 exclude: /node_modules/
             },
             {
-                test: /\.styl$/,
-                loader: 'stylint-loader',
-                enforce: 'pre'
-            },
-            {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
-                exclude: /(node_modules|bower_components)/
+                exclude: /node_modules/,
+                options: { ...babelConfig }
             },
             {
                 test: /\.styl$/,
