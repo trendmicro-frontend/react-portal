@@ -5,7 +5,7 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Fade from './Fade';
-import { RenderPortal } from '../src';
+import LegacyPortal from '../src/LegacyPortal';
 
 const Overlay = styled.div`
     position: fixed;
@@ -96,7 +96,7 @@ class App extends PureComponent {
                 <Button onClick={this.openModal}>Open</Button>
                 }
                 {open &&
-                <RenderPortal
+                <LegacyPortal
                     node={window.top.document && window.top.document.querySelector('#modal-container')}
                 >
                     <Overlay>
@@ -114,7 +114,7 @@ class App extends PureComponent {
                             </Fade>
                         </VerticallyCenter>
                     </Overlay>
-                </RenderPortal>
+                </LegacyPortal>
                 }
             </div>
         );
