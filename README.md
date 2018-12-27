@@ -218,7 +218,13 @@ See a complete example at https://github.com/trendmicro-frontend/react-portal/bl
 
 ### Properties
 
-#### Dropdown
+#### Portal
+
+Name | Type | Default | Description
+:--- | :--- | :------ | :----------
+node | DOM node | document.body | A root DOM node to render a React element.
+
+#### LegacyPortal
 
 Name | Type | Default | Description
 :--- | :--- | :------ | :----------
