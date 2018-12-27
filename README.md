@@ -54,9 +54,7 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 We recommend using [styled-components](https://github.com/styled-components/styled-components) to make style changes, like so:
 
 ```js
-import Portal from '@trendmicro/react-portal';
 import PropTypes from 'prop-types';
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const Overlay = styled.div`
@@ -117,7 +115,8 @@ Fade.defaultProps = {
 Then you can nest components in the following way:
 
 ### Center Modal Vertically
-```js
+
+```jsx
 <Portal>
     <Overlay>
         <VerticallyCenter>
@@ -131,7 +130,7 @@ Then you can nest components in the following way:
 
 ### Fade-in Animation
 
-```js
+```jsx
 <Portal>
     <Overlay>
         <VerticallyCenter>
@@ -149,7 +148,7 @@ Then you can nest components in the following way:
 
 #### Transport children to a DOM element within the top window document
 
-```js
+```jsx
 <LegacyPortal
     node={window.top.document && window.top.document.querySelector('#modal-container')}
 >
