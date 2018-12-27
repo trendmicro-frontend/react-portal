@@ -4,13 +4,15 @@
   "description": "React Portal component",
   "main": "index.js",
   "files": [
-    "*.js"
+    "index.js",
+    "LegacyPortal.js",
+    "Portal.js"
   ],
   "scripts": {
     "prepublish": "npm run lint && npm test && npm run clean && npm run build && npm run build-examples",
     "build": "babel --out-dir . ./src",
     "build-examples": "cd examples; webpack",
-    "clean": "del index.js Portal.js LegacyPortal.js",
+    "clean": "del index.js LegacyPortal.js Portal.js",
     "demo": "http-server -p 8000 docs/",
     "lint": "eslint ./src",
     "lint:fix": "eslint --fix ./src",
