@@ -20,18 +20,33 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 
   ```js
   import Portal from '@trendmicro/react-portal';
+
+  // Use LegacyPortal if you need cross-frame rendering support.
+  import LegacyPortal from '@trendmicro/react-portal/LegacyPortal';
   ```
 
 ## Usage
 
-```js
+### Portal
+
+```jsx
 <Portal>
     This text is transported to the end of document.body.
 </Portal>
 
 <Portal node={document.body && document.body.querySelector('#modal-container')}>
-    This text is transported to a specified element.
+    This text is transported to a DOM element.
 </Portal>
+```
+
+### LegacyPortal
+
+```jsx
+<LegacyPortal
+    node={window.top.document && window.top.document.querySelector('#modal-container')}
+>
+    This text is transported to a DOM element within the top window document.
+</LegacyPortal>
 ```
 
 ## Examples
@@ -39,12 +54,10 @@ Demo: https://trendmicro-frontend.github.io/react-portal
 We recommend using [styled-components](https://github.com/styled-components/styled-components) to make style changes, like so:
 
 ```js
-import Portal from '@trendmicro/react-portal';
 import PropTypes from 'prop-types';
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const StyledPortal = styled(Portal)`
+const Overlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -102,38 +115,51 @@ Fade.defaultProps = {
 Then you can nest components in the following way:
 
 ### Center Modal Vertically
-```js
-<StyledPortal>
-    <VerticallyCenter>
-        <Modal>
-            Your modal content goes here
-        </Modal>
-    </VeticallyCenter>
-</StyledPortal>
+
+```jsx
+<Portal>
+    <Overlay>
+        <VerticallyCenter>
+            <Modal>
+                Your modal content goes here
+            </Modal>
+        </VeticallyCenter>
+    </Overlay>
+</Portal>
 ```
 
 ### Fade-in Animation
 
-```js
-<StyledPortal>
-    <VerticallyCenter>
+```jsx
+<Portal>
+    <Overlay>
+        <VerticallyCenter>
+            <Fade timeout={150}>
+                <Modal>
+                    Your modal content goes here
+                </Modal>
+            </Fade>
+        </VeticallyCenter>
+    </Overlay>
+</Portal>
+```
+
+## Fullscreen Modal From Within an Iframe
+
+#### Transport children to a DOM element within the top window document
+
+```jsx
+<LegacyPortal
+    node={window.top.document && window.top.document.querySelector('#modal-container')}
+>
+    <Overlay>
         <Fade timeout={150}>
             <Modal>
                 Your modal content goes here
             </Modal>
         </Fade>
-    </VeticallyCenter>
-</StyledPortal>
-```
-
-## Fullscreen Modal From Within an Iframe
-
-#### Specify the node property with an DOM element within the top window document
-
-```js
-<StyledPortal
-    node={window.top.document && window.top.document.querySelector('#modal-container')}
->
+    </Overlay>
+</LegacyPortal>
 ```
 
 #### Implement a `persistStyles()` function to synchronize style changes
@@ -191,7 +217,13 @@ See a complete example at https://github.com/trendmicro-frontend/react-portal/bl
 
 ### Properties
 
-#### Dropdown
+#### Portal
+
+Name | Type | Default | Description
+:--- | :--- | :------ | :----------
+node | DOM node | document.body | A root DOM node to render a React element.
+
+#### LegacyPortal
 
 Name | Type | Default | Description
 :--- | :--- | :------ | :----------

@@ -1,3 +1,5 @@
+import ReactDOM from 'react-dom';
 import Portal from './Portal';
+import LegacyPortal from './LegacyPortal';
 
-module.exports = Portal;
+export default !!(ReactDOM.createPortal) ? Portal : LegacyPortal;

@@ -5,9 +5,9 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Fade from './Fade';
-import Portal from '../src';
+import LegacyPortal from '../src/LegacyPortal';
 
-const StyledPortal = styled(Portal)`
+const Overlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -96,23 +96,25 @@ class App extends PureComponent {
                 <Button onClick={this.openModal}>Open</Button>
                 }
                 {open &&
-                <StyledPortal
+                <LegacyPortal
                     node={window.top.document && window.top.document.querySelector('#modal-container')}
                 >
-                    <VerticallyCenter>
-                        <Fade timeout={150}>
-                            <Modal>
-                                <VerticallyCenter>
-                                    <h1>Modal Content</h1>
-                                    <br />
-                                    <div style={{ textAlign: 'center' }}>
-                                        <Button onClick={this.closeModal}>Close Modal</Button>
-                                    </div>
-                                </VerticallyCenter>
-                            </Modal>
-                        </Fade>
-                    </VerticallyCenter>
-                </StyledPortal>
+                    <Overlay>
+                        <VerticallyCenter>
+                            <Fade timeout={150}>
+                                <Modal>
+                                    <VerticallyCenter>
+                                        <h1>Modal Content</h1>
+                                        <br />
+                                        <div style={{ textAlign: 'center' }}>
+                                            <Button onClick={this.closeModal}>Close Modal</Button>
+                                        </div>
+                                    </VerticallyCenter>
+                                </Modal>
+                            </Fade>
+                        </VerticallyCenter>
+                    </Overlay>
+                </LegacyPortal>
                 }
             </div>
         );

@@ -9,7 +9,7 @@ import Fade from './Fade';
 import Navbar from './Navbar';
 import Portal from '../src';
 
-const StyledPortal = styled(Portal)`
+const Overlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -59,56 +59,60 @@ class App extends PureComponent {
                                     Open
                                 </Button>
                                 {this.state.modal1 &&
-                                <StyledPortal node={document.querySelector('#modal-container')}>
-                                    <VerticallyCenter>
-                                        <Fade timeout={150}>
-                                            <Modal>
-                                                <VerticallyCenter>
-                                                    <h1>Modal #1</h1>
-                                                    <br />
-                                                    <div style={{ textAlign: 'center' }}>
-                                                        <Button
-                                                            onClick={() => {
-                                                                this.setState({
-                                                                    modal1: false,
-                                                                    modal2: true
-                                                                });
-                                                            }}
-                                                        >
-                                                            Close Modal
-                                                        </Button>
-                                                    </div>
-                                                </VerticallyCenter>
-                                            </Modal>
-                                        </Fade>
-                                    </VerticallyCenter>
-                                </StyledPortal>
+                                <Portal>
+                                    <Overlay>
+                                        <VerticallyCenter>
+                                            <Fade timeout={150}>
+                                                <Modal>
+                                                    <VerticallyCenter>
+                                                        <h1>Modal #1</h1>
+                                                        <br />
+                                                        <div style={{ textAlign: 'center' }}>
+                                                            <Button
+                                                                onClick={() => {
+                                                                    this.setState({
+                                                                        modal1: false,
+                                                                        modal2: true
+                                                                    });
+                                                                }}
+                                                            >
+                                                                Close Modal
+                                                            </Button>
+                                                        </div>
+                                                    </VerticallyCenter>
+                                                </Modal>
+                                            </Fade>
+                                        </VerticallyCenter>
+                                    </Overlay>
+                                </Portal>
                                 }
                                 {this.state.modal2 &&
-                                <StyledPortal node={document.querySelector('#modal-container')}>
-                                    <VerticallyCenter>
-                                        <Fade timeout={150}>
-                                            <Modal>
-                                                <VerticallyCenter>
-                                                    <h1>Modal #2</h1>
-                                                    <br />
-                                                    <div style={{ textAlign: 'center' }}>
-                                                        <Button
-                                                            onClick={() => {
-                                                                this.setState({
-                                                                    modal1: false,
-                                                                    modal2: false
-                                                                });
-                                                            }}
-                                                        >
-                                                            Close Modal
-                                                        </Button>
-                                                    </div>
-                                                </VerticallyCenter>
-                                            </Modal>
-                                        </Fade>
-                                    </VerticallyCenter>
-                                </StyledPortal>
+                                <Portal>
+                                    <Overlay>
+                                        <VerticallyCenter>
+                                            <Fade timeout={150}>
+                                                <Modal>
+                                                    <VerticallyCenter>
+                                                        <h1>Modal #2</h1>
+                                                        <br />
+                                                        <div style={{ textAlign: 'center' }}>
+                                                            <Button
+                                                                onClick={() => {
+                                                                    this.setState({
+                                                                        modal1: false,
+                                                                        modal2: false
+                                                                    });
+                                                                }}
+                                                            >
+                                                                Close Modal
+                                                            </Button>
+                                                        </div>
+                                                    </VerticallyCenter>
+                                                </Modal>
+                                            </Fade>
+                                        </VerticallyCenter>
+                                    </Overlay>
+                                </Portal>
                                 }
                             </Section>
                         </div>
