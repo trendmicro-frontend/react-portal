@@ -1,6 +1,6 @@
 {
   "name": "@trendmicro/react-portal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Portal component",
   "main": "index.js",
   "files": [
@@ -42,8 +42,8 @@
     "react-portal"
   ],
   "peerDependencies": {
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0"
+    "react": "^0.14.0 || >=15.0.0",
+    "react-dom": "^0.14.0 || >=15.0.0"
   },
   "dependencies": {},
   "devDependencies": {
